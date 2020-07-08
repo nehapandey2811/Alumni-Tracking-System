@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+		<title>INDIRA GANDHI DELHI TECHNICAL UNIVERSITY FOR WOMEN</title>
+    <!-- Loading third party fonts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link href="http://fonts.googleapis.com/css?family=Arvo:400,700|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Loading main css file -->
+   
+    <link rel="stylesheet" href="{%static 'blog/style.css' %}">
+    <link rel="stylesheet" href="{%static 'blog/main1.css' %}">
+  
+		
+		<script src="{%static 'blog/js/ie-support/html5.js' %}"></script>
+		<script src="{%static 'blog/js/ie-support/respond.js'%}"></script>
+	 
+
+	</head>
+
+
+	<body>
+		
+		<div id="site-content">
+			<header class="site-header">
+				<div class="primary-header">
+					<div class="container">
+						<a href="{% url 'blog-home' %}" id="branding">
+							<img src="{%static 'blog/images/logoc.jpg' %}" alt="Lincoln high School">
+							<h1 class="site-title">INDIRA  GANDHI  DELHI  TECHNICAL  UNIVERSITY  FOR  WOMEN</h1>
+						</a> 
+
+						<div class="main-navigation">
+							<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+							{% if user.is_superuser%}
+							<ul class="menu">
+								<li class="menu-item"><a href="{% url 'secondhome' %}">posts</a></li>
+								<li class="menu-item"><a href="{% url 'blog-about' %}">about</a></li>
+								<li class="menu-item"><a href="{% url 'post-create' %}">new post</a></li>
+								<li class="menu-item"><a href="{% url 'profile' %}">profile</a></li>
+								<li class="menu-item"><a href="{% url 'posts:create' %}">group posts</a></li>
+								<li class="menu-item"><a href="{% url 'groups:all' %}">groups</a></li>
+								<li class="menu-item"><a href="{% url 'groups:create' %}">create group</a></li>
+								<li class="menu-item"><a href="{% url 'admin:index' %}">database</a></li>
+								<li class="menu-item"><a href="{%url 'contact' %}">email</a></li>
+								<li class="menu-item"><a href="{% url 'logout' %}">Logout</a></li>
+								{%else %}
+								{% if user.is_authenticated %}
+							</ul> 
+							<ul class="menu">
+                
+								<li class="menu-item"><a href="{% url 'secondhome' %}">posts</a></li>
+								<li class="menu-item"><a href="{% url 'blog-about' %}">about</a></li>
+								<li class="menu-item"><a href="{% url 'post-create' %}">new post</a></li>
+								<li class="menu-item"><a href="{% url 'profile' %}">profile</a></li>
+								<li class="menu-item"><a href="{% url 'posts:create' %}">group posts</a></li>
+								<li class="menu-item"><a href="{% url 'groups:all' %}">groups</a></li>
+								<li class="menu-item"><a href="{% url 'groups:create' %}">create group</a></li>
+								<li class="menu-item"><a href="#">Find people</a></li>
+								<li class="menu-item"><a href="{%url 'refer' %}">Refer</a></li>
+								<li class="menu-item"><a href="{% url 'logout' %}">Logout</a></li>
+							</ul>
+							{% else %}
+							<li class="menu-item current-menu-item"><a href="{% url 'login' %}">login</a></li>
+							<li class="menu-item"><a href="{% url 'register' %}">register</a></li>
+							{% endif %}
+							{%endif%}
+						</div> 
+            
+							<div class="mobile-navigation"></div>
+						</div>  
+					</div>   
+				 <div class="home-slider">
+					<div class="container">
+						<div class="slider">
+							<ul class="slides">
+								<li>
+									<div class="slide-caption">
+										<h4 class="slide-title">EDUCATION <br> ENLIGHTENMENT <br>EMPOWERMENT </h4> 									
+	
+									 </div>
+									
+								</li>
+								<li>
+									<div class="slide-caption">
+										<h4 class="slide-title">Educate a Woman;<br>Educate a Generation!</h4> 
+
+							
+									</div>
+									
+								</li>
+								<li>
+									<div class="slide-caption">
+										<h4 class="slide-title">Education is not the learning of facts, <br> but the training of the mind to think.</h4>
+				 
+									</div> 
+								</li> 
+							 </ul>
+						</div> 
+					 </div> 
+				</div>
+			</header>
+		</div>
+    {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{%block content%}
+{%endblock%}
