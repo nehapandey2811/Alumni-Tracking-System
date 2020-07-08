@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{%load static %}
+{% block content %}
+<div class="posts-page">
+	<div class="container">
+		<div class="row">
+			{% block prepost%}{% endblock %}
+			{% block post_content %}{% endblock %}
+			{% block post_post%}{% endblock %}
+		</div>
+	</div>
+</div>
+<script src="{%static 'blog/js/jquery-1.11.1.min.js'%}"></script>
+    <script src="{%static 'blog/js/plugins.js'%}"></script>
+    <script src="{%static 'blog/js/app.js' %}"></script>
+{% endblock %}
